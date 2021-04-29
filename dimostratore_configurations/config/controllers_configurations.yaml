@@ -1,0 +1,33 @@
+control_configurations:
+- name: "test_ur5"
+  components:
+  - {hardware_interface: "ur5_hw", controller: "js_pub", description: ""}
+- name: "watch"
+  components:
+  - {hardware_interface: "ur5_hw", controller: "js_pub", description: ""}
+  - {hardware_interface: "coe_hw", controller: "js_pub", description: ""}
+- name: "ctrl"
+  depends: "warmup"
+  components:
+  - {hardware_interface: "ur5_hw", controller: "ctrl1", description: ""}
+  - {hardware_interface: "ur5_hw", controller: "ctrl2", description: ""}
+  - {hardware_interface: "ur5_hw", controller: "ctrl3", description: ""}
+  - {hardware_interface: "ur5_hw", controller: "ctrl4", description: ""}
+  - {hardware_interface: "ur5_hw", controller: "ctrl5", description: ""}
+  - {hardware_interface: "ur5_hw", controller: "ctrl6", description: ""}
+  - {hardware_interface: "coe_hw", controller: "ctrl0", description: ""}
+  - {hardware_interface: "ur5_hw", controller: "js_pub", description: ""}
+  - {hardware_interface: "coe_hw", controller: "js_pub", description: ""}
+
+- name: "thor"
+  depends: "ctrl"
+  components:
+  - {hardware_interface: "planner_hw", controller: "thor_prefilter_planner", description: ""}
+
+
+start_gazebo: false
+gazebo_bringup_time: 0
+configuration_dispatches:
+  watch: 0.3
+  ctrl: 0.7
+  thor: 1.0

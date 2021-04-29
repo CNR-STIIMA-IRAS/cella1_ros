@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+ 
+  <xacro:macro name="bluebox" params="name width height depth thickness">
+
+  <link name="${name}">
+    <visual>
+      <origin xyz="0 0 ${thickness*0.5}" rpy="0 0 0" />
+      <geometry>
+        <box size="${width} ${depth} ${thickness}"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 0.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin xyz="${(width-thickness)*0.5} 0 ${thickness+(height-thickness)*0.5}" rpy="0 0 0" />
+      <geometry>
+        <box size="${thickness} ${depth} ${height-thickness}"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 0.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin xyz="${-(width-thickness)*0.5} 0 ${thickness+(height-thickness)*0.5}" rpy="0 0 0" />
+      <geometry>
+        <box size="${thickness} ${depth} ${height-thickness}"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 0.0"/>
+      </material>
+    </visual>
+
+    <visual>
+      <origin xyz="0 ${(depth-thickness)*0.5} ${thickness+(height-thickness)*0.5}" rpy="0 0 0" />
+      <geometry>
+        <box size="${width-2*thickness} ${thickness} ${height-thickness}"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 0.0"/>
+      </material>
+    </visual>
+
+    <visual>
+      <origin xyz="0 ${-(depth-thickness)*0.5} ${thickness+(height-thickness)*0.5}" rpy="0 0 0" />
+      <geometry>
+        <box size="${width-2*thickness} ${thickness} ${height-thickness}"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 0.0"/>
+      </material>
+    </visual>
+  </link>
+
+
+  </xacro:macro>
+</robot>

@@ -1,0 +1,88 @@
+ur5_hw:
+  type: "itia/control/UrDriverHwIfaceNodelet"
+  joint_names:
+  - u5_shoulder_pan_joint
+  - u5_shoulder_lift_joint
+  - u5_elbow_joint
+  - u5_wrist_1_joint
+  - u5_wrist_2_joint
+  - u5_wrist_3_joint
+
+  sampling_period: 0.008
+  diagnostic_period: 0.1
+  max_tracking_error: 0.02
+
+  remap_source_args:
+  - "/ur5_hw/js_pub/joint_states"
+  - "/ur5_hw/thor_prefilter_planner/follow_joint_trajectory/cancel"
+  - "/ur5_hw/thor_prefilter_planner/follow_joint_trajectory/feedback"
+  - "/ur5_hw/thor_prefilter_planner/follow_joint_trajectory/goal"
+  - "/ur5_hw/thor_prefilter_planner/follow_joint_trajectory/result"
+  - "/ur5_hw/thor_prefilter_planner/follow_joint_trajectory/status"
+  - "/ur5_hw/thor_prefilter_planner/unscaled_joint_target/joint_states"
+
+  remap_target_args:
+  - "/ur5_on_guide/joint_states"
+  - "/ur5_on_guide/follow_joint_trajectory/cancel"
+  - "/ur5_on_guide/follow_joint_trajectory/feedback"
+  - "/ur5_on_guide/follow_joint_trajectory/goal"
+  - "/ur5_on_guide/follow_joint_trajectory/result"
+  - "/ur5_on_guide/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
+
+
+  force_torque_sensor_controller:
+     type:         force_torque_sensor_controller/ForceTorqueSensorController
+     publish_rate: 125
+
+  js_pub:
+    type:         ros/control/JointStatePublisher
+    controlled_joint:
+    - ur5_shoulder_pan_joint
+    - ur5_shoulder_lift_joint
+    - ur5_elbow_joint
+    - ur5_wrist_1_joint
+    - ur5_wrist_2_joint
+    - ur5_wrist_3_joint
+
+  ctrl1:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "ur5_shoulder_pan_joint"
+
+  ctrl2:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "ur5_shoulder_lift_joint"
+
+  ctrl3:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "ur5_elbow_joint"
+
+  ctrl4:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "ur5_wrist_1_joint"
+
+  ctrl5:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "ur5_wrist_2_joint"
+
+  ctrl6:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "ur5_wrist_3_joint"
+
+
+  thor_prefilter_planner:
+    type: "thor/PrefilterPosVelEffController"
+    controlled_joint:
+    - ur5_shoulder_pan_joint
+    - ur5_shoulder_lift_joint
+    - ur5_elbow_joint
+    - ur5_wrist_1_joint
+    - ur5_wrist_2_joint
+    - ur5_wrist_3_joint
+    spline_order: 1

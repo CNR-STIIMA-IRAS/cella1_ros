@@ -1,0 +1,6 @@
+base_frame: "world"
+tool_frame: "tip"
+test_links:
+- tool0
+- forearm_link
+- tip
