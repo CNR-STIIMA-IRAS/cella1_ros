@@ -31,7 +31,7 @@ ur5_hw:
   js_pub:
     type: cnr/control/JointStatePublisher
     controlled_joint: all
-    base_link: ur5_base_link
+    base_link: world
     tool_link: ur5_tool0
     robot_description_param: /robot_description
     robot_description_planning_param: /robot_description_planning
