@@ -1,7 +1,16 @@
 coe_hw:
-  type: "itia/control/FakeHwIfaceNodelet"
+  type: cnr/control/FakeRobotHW
+  appenders: [file, screen]
+  levels: [trace, info]
+  pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%50M:%04L][%24c] %m%n"
+  file_name: "coe_hw"
+  sampling_period: 0.001
+  diagnostic_period: 0.1
+  maximum_missing_cycles: 20
+  feedback_joint_state_timeout: 10
   joint_names:
   - linear_motor_cursor_joint
+
 
   initial_position: [0.1]
 
@@ -11,9 +20,13 @@ coe_hw:
   - "/elmo/joint_states"
 
   js_pub:
-    type: ros/control/JointStatePublisher
-    controlled_joint:
-    - linear_motor_cursor_joint
+    type: cnr/control/JointStatePublisher
+    controlled_joint: all
+    base_link: world
+    tool_link: ur5_tool0
+    robot_description_param: /robot_description
+    robot_description_planning_param: /robot_description_planning
+
 
   homing_linear_motor_cursor_joint:
     type:        itia/control/HomingController
