@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>cella1_configurations</name>
+  <version>0.0.0</version>
+  <description>The cella1_configurations package</description>
+
+  <maintainer email="manuel.beschi@unibs.it">Manuel Beschi</maintainer>
+
+
+  <license>BSD</license>
+
+
+ 
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>cella1_descriptions</depend>
+
+
+  <export>
+  </export>
+</package>

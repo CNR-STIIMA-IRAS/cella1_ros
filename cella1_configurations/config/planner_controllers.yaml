@@ -1,0 +1,24 @@
+planner_hw:
+  thor_prefilter_planner:
+    type: "thor/PrefilterPosVelEffController"
+    spline_order: 1
+    controlled_joint:
+    - linear_motor_cursor_joint
+    - ur5_shoulder_pan_joint
+    - ur5_shoulder_lift_joint
+    - ur5_elbow_joint
+    - ur5_wrist_1_joint
+    - ur5_wrist_2_joint
+    - ur5_wrist_3_joint
+
+
+  joint_teleop:
+    type: "itia/control/JointTeleopController"
+    setpoint_topic_name: "/manipulator/target_joint_state"
+
+  cart_teleop:
+    type: "itia/control/CartTeleopController"
+    setpoint_topic_name: "/manipulator/target_twisted_stamped"
+    base_link: "world"
+    tool_link: "tool0"
+    

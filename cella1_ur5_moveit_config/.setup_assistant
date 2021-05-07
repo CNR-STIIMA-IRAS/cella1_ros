@@ -1,6 +1,6 @@
 moveit_setup_assistant_config:
   URDF:
-    package: dimostratore_descriptions
+    package: cella1_descriptions
     relative_path: urdf/cella_ur5.xacro
     xacro_args: ""
   SRDF:
