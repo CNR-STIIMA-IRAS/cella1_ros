@@ -74,9 +74,8 @@
 </include>
 
 
-<rosparam file="$(find cella1_configurations)/config/thor_safety.yaml" command="load"/>
+<!--<rosparam file="$(find cella1_configurations)/config/thor_safety.yaml" command="load"/>
 <node pkg="velocity_scaling_iso15066" type="velocity_scaling_iso15066_node" name="safety" output="log">
-<!--  <remap from="poses" to="/centroid_detection_rs1/poses"/>-->
-</node>
+</node>-->
 
 </launch>

@@ -27,14 +27,6 @@ planner_hw:
 
   microinterpolator:
     type: "cnr/control/FollowJointTrajectoryPosVelEffController"
-    controlled_joints:
-    - linear_motor_cursor_joint
-    - ur5_shoulder_pan_joint
-    - ur5_shoulder_lift_joint
-    - ur5_elbow_joint
-    - ur5_wrist_1_joint
-    - ur5_wrist_2_joint
-    - ur5_wrist_3_joint
     controlled_joints: all
     interpolator: "thor/ThorPrefilter"
     regulator: "regulator/fake_regulator"
