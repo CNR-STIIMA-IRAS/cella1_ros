@@ -1,8 +1,13 @@
 ur5_hw:
+  remap_source_args:
+  - "/ur5_hw/js_pub/joint_states"
+  remap_target_args:
+  - "/ur5/joint_states"
+
   js_pub:
     type: cnr/control/JointStatePublisher
     controlled_joint: all
-    base_link: world
+    base_link: ur5_base_link
     tool_link: ur5_tool0
     robot_description_param: /robot_description
     robot_description_planning_param: /robot_description_planning
@@ -13,45 +18,37 @@ ur5_hw:
      publish_rate: 125
 
   ctrl1:
-    type:        itia/control/OpenLoopPositionController
+    type:        cnr/control/OpenLoopPositionController
     setpoint_topic_name: "/manipulator/joint_target"
     controlled_joint: "ur5_shoulder_pan_joint"
+    enable_setpoint_watchdog: false
 
   ctrl2:
-    type:        itia/control/OpenLoopPositionController
+    type:        cnr/control/OpenLoopPositionController
     setpoint_topic_name: "/manipulator/joint_target"
     controlled_joint: "ur5_shoulder_lift_joint"
+    enable_setpoint_watchdog: false
 
   ctrl3:
-    type:        itia/control/OpenLoopPositionController
+    type:        cnr/control/OpenLoopPositionController
     setpoint_topic_name: "/manipulator/joint_target"
     controlled_joint: "ur5_elbow_joint"
+    enable_setpoint_watchdog: false
 
   ctrl4:
-    type:        itia/control/OpenLoopPositionController
+    type:        cnr/control/OpenLoopPositionController
     setpoint_topic_name: "/manipulator/joint_target"
     controlled_joint: "ur5_wrist_1_joint"
+    enable_setpoint_watchdog: false
 
   ctrl5:
-    type:        itia/control/OpenLoopPositionController
+    type:        cnr/control/OpenLoopPositionController
     setpoint_topic_name: "/manipulator/joint_target"
     controlled_joint: "ur5_wrist_2_joint"
+    enable_setpoint_watchdog: false
 
   ctrl6:
-    type:        itia/control/OpenLoopPositionController
+    type:        cnr/control/OpenLoopPositionController
     setpoint_topic_name: "/manipulator/joint_target"
     controlled_joint: "ur5_wrist_3_joint"
-
-
-
-
-  thor_prefilter_planner:
-    type: "thor/PrefilterPosVelEffController"
-    controlled_joint:
-    - ur5_shoulder_pan_joint
-    - ur5_shoulder_lift_joint
-    - ur5_elbow_joint
-    - ur5_wrist_1_joint
-    - ur5_wrist_2_joint
-    - ur5_wrist_3_joint
-    spline_order: 1
+    enable_setpoint_watchdog: false

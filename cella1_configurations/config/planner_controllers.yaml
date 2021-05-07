@@ -1,8 +1,33 @@
 planner_hw:
-  thor_prefilter_planner:
-    type: "thor/PrefilterPosVelEffController"
-    spline_order: 1
-    controlled_joint:
+  remap_source_args:
+  - "/planner_hw/microinterpolator/follow_joint_trajectory/cancel"
+  - "/planner_hw/microinterpolator/follow_joint_trajectory/feedback"
+  - "/planner_hw/microinterpolator/follow_joint_trajectory/goal"
+  - "/planner_hw/microinterpolator/follow_joint_trajectory/result"
+  - "/planner_hw/microinterpolator/follow_joint_trajectory/status"
+  - "/planner_hw/microinterpolator/unscaled_joint_target/joint_states"
+  - "/planner_hw/js_pub/joint_states"
+  remap_target_args:
+  - "/ur5/follow_joint_trajectory/cancel"
+  - "/ur5/follow_joint_trajectory/feedback"
+  - "/ur5/follow_joint_trajectory/goal"
+  - "/ur5/follow_joint_trajectory/result"
+  - "/ur5/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
+  - "/joint_states"
+
+  js_pub:
+    type: cnr/control/JointStatePublisher
+    controlled_joint: all
+    base_link: world
+    tool_link: ur5_tool0
+    robot_description_param: /robot_description
+    robot_description_planning_param: /robot_description_planning
+
+
+  microinterpolator:
+    type: "cnr/control/FollowJointTrajectoryPosVelEffController"
+    controlled_joints:
     - linear_motor_cursor_joint
     - ur5_shoulder_pan_joint
     - ur5_shoulder_lift_joint
@@ -10,15 +35,8 @@ planner_hw:
     - ur5_wrist_1_joint
     - ur5_wrist_2_joint
     - ur5_wrist_3_joint
-
-
-  joint_teleop:
-    type: "itia/control/JointTeleopController"
-    setpoint_topic_name: "/manipulator/target_joint_state"
-
-  cart_teleop:
-    type: "itia/control/CartTeleopController"
-    setpoint_topic_name: "/manipulator/target_twisted_stamped"
-    base_link: "world"
-    tool_link: "tool0"
+    controlled_joints: all
+    interpolator: "thor/ThorPrefilter"
+    regulator: "regulator/fake_regulator"
+    spline_order: 1
     

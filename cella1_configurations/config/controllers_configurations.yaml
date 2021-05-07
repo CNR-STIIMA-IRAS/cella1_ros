@@ -3,6 +3,7 @@ control_configurations:
   components:
   - {hardware_interface: "ur5_hw", controller: "js_pub", description: ""}
   - {hardware_interface: "coe_hw", controller: "js_pub", description: ""}
+  - {hardware_interface: "planner_hw", controller: "js_pub", description: ""}
 - name: "ctrl"
   depends: ["watch"]
   components:
@@ -16,5 +17,5 @@ control_configurations:
 - name: "trajectory_tracking"
   depends: ["ctrl"]
   components:
-  - {hardware_interface: "planner_hw", controller: "thor_prefilter_planner", description: ""}
+  - {hardware_interface: "planner_hw", controller: "microinterpolator", description: ""}
 

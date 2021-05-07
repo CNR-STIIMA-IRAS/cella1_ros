@@ -1,4 +1,3 @@
-
 controller_list:
   - name: ur5
     action_ns: follow_joint_trajectory
