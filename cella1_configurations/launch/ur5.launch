@@ -56,7 +56,7 @@
   pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%04L][%c] %m%n"
 </rosparam>
   <param name="num_worker_threads" value="40" />
-  <remap from="~configuration_dispatches" to="/configuration_manager/configuration_dispatches" />
+  <remap from="~configuration_dispatches" to="/configuration_dispatches" />
 </node>
 
 

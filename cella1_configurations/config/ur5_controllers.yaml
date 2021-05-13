@@ -19,36 +19,6 @@ ur5_hw:
 
   ctrl1:
     type:        cnr/control/OpenLoopPositionController
-    setpoint_topic_name: "/manipulator/joint_target"
-    controlled_joint: "ur5_shoulder_pan_joint"
-    enable_setpoint_watchdog: false
-
-  ctrl2:
-    type:        cnr/control/OpenLoopPositionController
-    setpoint_topic_name: "/manipulator/joint_target"
-    controlled_joint: "ur5_shoulder_lift_joint"
-    enable_setpoint_watchdog: false
-
-  ctrl3:
-    type:        cnr/control/OpenLoopPositionController
-    setpoint_topic_name: "/manipulator/joint_target"
-    controlled_joint: "ur5_elbow_joint"
-    enable_setpoint_watchdog: false
-
-  ctrl4:
-    type:        cnr/control/OpenLoopPositionController
-    setpoint_topic_name: "/manipulator/joint_target"
-    controlled_joint: "ur5_wrist_1_joint"
-    enable_setpoint_watchdog: false
-
-  ctrl5:
-    type:        cnr/control/OpenLoopPositionController
-    setpoint_topic_name: "/manipulator/joint_target"
-    controlled_joint: "ur5_wrist_2_joint"
-    enable_setpoint_watchdog: false
-
-  ctrl6:
-    type:        cnr/control/OpenLoopPositionController
-    setpoint_topic_name: "/manipulator/joint_target"
-    controlled_joint: "ur5_wrist_3_joint"
+    setpoint_topic_name: "/ur5/joint_target"
+    controlled_joints: all
     enable_setpoint_watchdog: false
