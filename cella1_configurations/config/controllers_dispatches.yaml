@@ -1,10 +1,7 @@
 configuration_dispatches:
-  start_gazebo: false
-  gazebo_bringup_time: 0
-  configuration_dispatches:
-    - { name: watch, at: 0.5 }
-  #  - { name: ctrl,  at: 0.8 }
-  #  - { name: trajectory_tracking,  at: 1.0 }
+  - { name: watch, at: 0.5 }
+  - { name: ctrl,  at: 0.8 }
+  - { name: trajectory_tracking,  at: 5.0 }
 
 
 

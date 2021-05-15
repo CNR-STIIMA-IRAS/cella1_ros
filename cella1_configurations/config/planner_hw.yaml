@@ -18,11 +18,11 @@ planner_hw:
     subscribed_topics :
     - /elmo/joint_states
     - /ur5/joint_states
-#    - /ur5/joint_states
-#    - /ur5/joint_states
-#    - /ur5/joint_states
-#    - /ur5/joint_states
-#    - /ur5/joint_states
+    - /ur5/joint_states
+    - /ur5/joint_states
+    - /ur5/joint_states
+    - /ur5/joint_states
+    - /ur5/joint_states
     published_topics :
     - /ur5/joint_target
 #    - /ur5/joint_target

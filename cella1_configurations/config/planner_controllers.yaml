@@ -26,9 +26,7 @@ planner_hw:
 
 
   microinterpolator:
-    type: "cnr/control/FollowJointTrajectoryPosVelEffController"
+    type: "cnr/control/ScaledFJTPosController"
     controlled_joints: all
-    interpolator: "thor/ThorPrefilter"
-    regulator: "regulator/fake_regulator"
-    spline_order: 1
+    continuity_order: 1
     
