@@ -25,13 +25,6 @@ planner_hw:
     - /ur5/joint_states
     published_topics :
     - /ur5/joint_target
-#    - /ur5/joint_target
-#    - /ur5/joint_target
-#    - /ur5/joint_target
-#    - /ur5/joint_target
-#    - /ur5/joint_target
-#    - /ur5/joint_target
-
 
   sampling_period: 0.008
   diagnostic_period: 0.1

@@ -30,3 +30,6 @@ planner_hw:
     controlled_joints: all
     continuity_order: 1
     
+  joint_teleop:
+    type: cnr/control/JointTeleopController
+    controlled_joints: all
