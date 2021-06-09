@@ -27,7 +27,7 @@
 
 
 <xacro:include filename="$(find ur_description)/urdf/inc/ur5_macro.xacro"/>
-<xacro:ur10_robot prefix="ur5_"
+<xacro:ur5_robot prefix="ur5_"
    transmission_hw_interface="$(arg transmission_hw_interface)"
 />
 
