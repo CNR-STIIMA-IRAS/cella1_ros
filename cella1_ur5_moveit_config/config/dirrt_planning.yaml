@@ -1,6 +1,11 @@
 group_names_map:
   mg: ur5
+  mg_extend: ur5
+  mg_extend_global: ur5
   hamp: ur5
+  timebased: ur5
+  hamp_timebased: ur5
+  timebased_extend: ur5
 
 default_planner_config: mg
 
@@ -33,7 +38,95 @@ mg:
   computation_step: 0.01
   detector_topic: /poses #topic name of the message type geometry_msgs/PoseArray. ***CHANGE IT IF NEEDED***
 
+mg_extend:
+  type: Multigoal
+  max_distance: 0.2
+  max_refine_time: 1500.0
+  extend: true
+  local_bias: 0.25
+  tube_radius: 0.02
+  base_frame: world
+  tool_frame: tip
+  min_distance: 0.4
+  max_distance: 1.0
+  max_penalty: 10.0
+  display_bubbles: true
+  links:
+  - tip
+  - ur5_tool0
+  - ur5_wrist_1_link
+  - ur5_wrist_2_link
+  - ur5_wrist_3_link
+  - ur5_forearm_link
+  - ur5_upper_arm_link
 
+  use_avoidance_goal: false # set true if the human avoidance is done only at the goal. Useful in Multigoal planning. ***CHANGE IT***
+  use_avoidance_path: false # set true if the human avoidance is done during the path. It is slower than use_avoidance_goal. ***CHANGE IT***
+  #If use_avoidance_goal and use_avoidance_path are both true, use_avoidance_path is used.
+  computation_step: 0.01
+  detector_topic: /poses #topic name of the message type geometry_msgs/PoseArray. ***CHANGE IT IF NEEDED***
+
+mg_extend_global:
+  type: Multigoal
+  max_distance: 0.2
+  max_refine_time: 1500.0
+  extend: true
+  local_bias: 0.0
+  tube_radius: 0.02
+  base_frame: world
+  tool_frame: tip
+  min_distance: 0.4
+  max_distance: 1.0
+  max_penalty: 10.0
+  display_bubbles: true
+  links:
+  - tip
+  - ur5_tool0
+  - ur5_wrist_1_link
+  - ur5_wrist_2_link
+  - ur5_wrist_3_link
+  - ur5_forearm_link
+  - ur5_upper_arm_link
+
+  use_avoidance_goal: false # set true if the human avoidance is done only at the goal. Useful in Multigoal planning. ***CHANGE IT***
+  use_avoidance_path: false # set true if the human avoidance is done during the path. It is slower than use_avoidance_goal. ***CHANGE IT***
+  #If use_avoidance_goal and use_avoidance_path are both true, use_avoidance_path is used.
+  computation_step: 0.01
+  detector_topic: /poses #topic name of the message type geometry_msgs/PoseArray. ***CHANGE IT IF NEEDED***
+
+timebased:
+  type: TimeBasedMultigoal
+  max_distance: 0.2
+  max_refine_time: 1500.0
+  extend: false
+  local_bias: 0.0
+  tube_radius: 0.02
+
+
+timebased_extend:
+  type: TimeBasedMultigoal
+  max_distance: 0.2
+  max_refine_time: 1500.0
+  extend: true
+  local_bias: 0.0
+  tube_radius: 0.02
+
+hamp_timebased:
+  type: HAMPTimeBasedMultigoal
+  max_distance: 0.2
+  max_refine_time: 1500.0
+  extend: false
+  base_frame: world
+  tool_frame: tip
+  computation_step: 0.1
+  links:
+  - tip
+  - ur5_tool0
+  - ur5_wrist_1_link
+  - ur5_wrist_2_link
+  - ur5_wrist_3_link
+  - ur5_forearm_link
+  - ur5_upper_arm_link
 
 hamp:
   type: Multigoal
@@ -62,4 +155,3 @@ hamp:
   #If use_avoidance_goal and use_avoidance_path are both true, use_avoidance_path is used.
   computation_step: 0.01
   detector_topic: /poses #topic name of the message type geometry_msgs/PoseArray. ***CHANGE IT IF NEEDED***
-

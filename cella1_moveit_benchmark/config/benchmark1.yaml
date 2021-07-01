@@ -1,0 +1,19 @@
+benchmark_config:
+    warehouse:
+        host: 127.0.0.1
+        port: 33829
+        scene_name: scene01     # Required
+    parameters:
+        name: scene01Pick1
+        runs: 50
+        group: ur5       # Required
+        timeout: 10.0
+        output_directory: /tmp/moveit_benchmarks/
+        queries: query01
+        start_states: start01
+    planning_pipelines:
+        - name: ompl
+          planners:
+            - RRTConnectkConfigDefault
+            - BKPIECEkConfigDefault
+            - KPIECEkConfigDefault

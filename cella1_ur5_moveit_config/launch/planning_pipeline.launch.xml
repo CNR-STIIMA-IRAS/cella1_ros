@@ -4,7 +4,7 @@
        It is assumed that all planning pipelines are named XXX_planning_pipeline.launch  -->
 
   <arg name="pipeline" default="ompl" />
-
-  <include file="$(find cella1_ur5_moveit_config)/launch/$(arg pipeline)_planning_pipeline.launch.xml" />
+  <include ns="planning_pipelines/ompl" file="$(find cella1_ur5_moveit_config)/launch/ompl_planning_pipeline.launch.xml" />
+  <include ns="planning_pipelines/dirrt" file="$(find cella1_ur5_moveit_config)/launch/dirrt_planning_pipeline.launch.xml" />
 
 </launch>

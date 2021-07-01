@@ -4,7 +4,8 @@
 <arg name="use_rviz" default="true" />
 <arg name="debug" default="false" />
 <arg name="pipeline" default="ompl" />
-
+<arg name="db" default="true" />
+<arg name="db_path" default="$(find cella1_ur5_moveit_config)/default_warehouse_mongo_db" />
 
 <arg unless="$(arg debug)" name="launch_prefix" value="" />
 <arg     if="$(arg debug)" name="launch_prefix"
@@ -73,5 +74,8 @@
   <arg name="debug" value="$(arg debug)"/>
 </include>
 
+<include file="$(find cella1_ur5_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)">
+  <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
+</include>
 
 </launch>
