@@ -1,9 +1,9 @@
 group_names_map:
   mg: ur5
   hamp: ur5
+  mg_egreedy: ur5
 
-default_planner_config: mg
-
+default_planner_config: mg_egreedy
 
 mg:
   type: Multigoal
@@ -14,10 +14,11 @@ mg:
   tube_radius: 0.02
   base_frame: world
   tool_frame: tip
-  min_distance: 0.4
-  max_distance: 1.0
   max_penalty: 10.0
   display_bubbles: true
+  min_avoidance_distance: 0.3
+  max_avoidance_distance: 1.5
+  forgetting_factor: 0.99
   links:
   - tip
   - ur5_tool0
@@ -33,7 +34,14 @@ mg:
   computation_step: 0.01
   detector_topic: /poses #topic name of the message type geometry_msgs/PoseArray. ***CHANGE IT IF NEEDED***
 
+mg_egreedy:
+  type: Multigoal
+  inherit: mg
+  forgetting_factor: 0.995
 
+  policy_type: MultiArmedBandit
+  policy_name: eGreedy
+  reward_fcn: RelativeImprovement
 
 hamp:
   type: Multigoal
@@ -62,4 +70,3 @@ hamp:
   #If use_avoidance_goal and use_avoidance_path are both true, use_avoidance_path is used.
   computation_step: 0.01
   detector_topic: /poses #topic name of the message type geometry_msgs/PoseArray. ***CHANGE IT IF NEEDED***
-
